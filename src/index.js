@@ -20,28 +20,16 @@ const server = new GraphQLServer({
 })
 
 const opts = {
-  defaultPlaygroundQuery: `
+  defaultPlaygroundQuery: `# https://github.com/mjuniper/graphql-api
 
 # to make authenticated requests, paste this into the http headers below:
 # {"authorization":"your-token"}
 
-fragment surveyFields on Survey {
-  id
-  title
-  description
-}
-
-fragment surveyFieldsWithSchedule on Survey {
-  id
-  title
-  formInfo {
-    status
-    schedule {
-      start
-      end
-    }
-  }
-}
+# ##########################################################
+# below are sample queries we can make to the graphql-api
+# the api will proxy those requests to the ago api making
+# only the requests necessary to fullfill the request
+# ##########################################################
 
 # this will make 1 request to ago (the search for the survey items)
 query publishedSurveys {
@@ -75,6 +63,24 @@ query survey {
 query surveyWithSchedule {
   survey(id:"680f7cef6b634dfcaec6b68b5008edf6") {
     ...surveyFieldsWithSchedule
+  }
+}
+
+fragment surveyFields on Survey {
+  id
+  title
+  description
+}
+
+fragment surveyFieldsWithSchedule on Survey {
+  id
+  title
+  formInfo {
+    status
+    schedule {
+      start
+      end
+    }
   }
 }
 `,
