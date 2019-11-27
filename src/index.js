@@ -1,16 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga')
 const resolvers = require('./graphql/resolvers').resolvers;
 
-/*
-  Issues to overcome when using this with ago api:
-    - search, sort, pagination...
-    - num has max of 100
-    - token/authorization
-    - no node in enterprise!!!
-    - [use arcgis-rest-js]
-    - avoid simply mirroring the ago api - this is an opportunity to make it better!
-*/
-
 const server = new GraphQLServer({
   typeDefs: `./src/graphql/schema.graphql`,
   resolvers,
