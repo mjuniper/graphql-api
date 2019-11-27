@@ -1,5 +1,5 @@
 type Query {
-  surveys(type: String, groups: [String]): [Survey!]!
+  surveys(type: String, groups: [String], q: String): [Survey!]!
   survey(id: ID!): Survey
 }
 
@@ -9,7 +9,15 @@ type Survey {
   description: String
   type: String
   typeKeywords: [String]
-  # formInfo: FormInfo
+  formInfo: FormInfo
 }
 
-# type FormInfo {}
+type FormInfo {
+  status: String
+  schedule: SurveySchedule
+}
+
+type SurveySchedule {
+  start: String
+  end: String
+}
