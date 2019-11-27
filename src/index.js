@@ -29,6 +29,7 @@ const server = new GraphQLServer({
 
 const opts = {
   defaultPlaygroundQuery: `
+
 # to make authenticated requests, paste this into the http headers below:
 # {"authorization":"your-token"}
 
@@ -50,14 +51,21 @@ fragment surveyFieldsWithSchedule on Survey {
   }
 }
 
-# this will make a 1 request to ago (the search for the survey items)
-query surveys {
+# this will make 1 request to ago (the search for the survey items)
+query publishedSurveys {
   surveys(type:"published" groups:["2f4d28abfdea4ffab5ec4c5c54574ef8", "95c6c8202a0e4f189ca0aad12a10d501"]) {
     ...surveyFields
   }
 }
 
-# this will make a n + 1 requests to ago (one for the search and then one for the formInfo for each result)
+# this will make 1 request to ago (the search for the survey items)
+query draftSurveys {
+  surveys(type:"draft" groups:["2f4d28abfdea4ffab5ec4c5c54574ef8", "95c6c8202a0e4f189ca0aad12a10d501"]) {
+    ...surveyFields
+  }
+}
+
+# this will make n + 1 requests to ago (one for the search and then one for the formInfo for each result)
 query surveysWithSchedules {
   surveys(type:"published" groups:["2f4d28abfdea4ffab5ec4c5c54574ef8", "95c6c8202a0e4f189ca0aad12a10d501"]) {
     ...surveyFieldsWithSchedule
