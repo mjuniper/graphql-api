@@ -2,14 +2,6 @@ const { GraphQLServer } = require('graphql-yoga')
 const resolvers = require('./graphql/resolvers').resolvers;
 
 /*
-  TODO:
-    - deploy to surge
-    - push upstream
-    - use arcgis-rest-js
-    - implement count info
-*/
-
-/*
   Issues to overcome when using this with ago api:
     - search, sort, pagination...
     - num has max of 100
