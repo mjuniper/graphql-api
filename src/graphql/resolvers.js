@@ -8,7 +8,7 @@ const log = url => {
 };
 const get = (url, ctx) => {
   log(url);
-  const token = ctx.request.headers.authorization;
+  const token = ctx.req.headers.authorization;
   if (token) {
     url = `${url}&token=${token}`;
   }
@@ -16,12 +16,12 @@ const get = (url, ctx) => {
   .then(res => res.json());
 };
 
-exports.resolvers = {
+module.exports = {
   Query: {
     surveys: (parent, args = {}, ctx) => {
       // TODO: q, num, start, sortField, sortOrder
       // TODO: really this is just a special kind of items search so we might delegate to an items query...
-      console.log('Got request for surveys');
+      console.log('\n\rGot request for surveys');
       const { groups, type, q } = args;
 
       const qParts = [
@@ -48,7 +48,7 @@ exports.resolvers = {
       .then(resp => resp.results);
     },
     survey: (parent, args, ctx) => {
-      console.log('Got request for survey');
+      console.log('\n\rGot request for survey');
       const { id } = args;
       const url = `${agoBaseUrl}/content/items/${id}?f=json`;
       return get(url, ctx);
