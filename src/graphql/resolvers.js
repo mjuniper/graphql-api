@@ -8,7 +8,7 @@ const log = url => {
 };
 const get = (url, ctx) => {
   log(url);
-  const token = ctx.request.headers.authorization;
+  const token = ctx.req.headers.authorization;
   if (token) {
     url = `${url}&token=${token}`;
   }
@@ -16,7 +16,7 @@ const get = (url, ctx) => {
   .then(res => res.json());
 };
 
-exports.resolvers = {
+module.exports = {
   Query: {
     surveys: (parent, args = {}, ctx) => {
       // TODO: q, num, start, sortField, sortOrder
