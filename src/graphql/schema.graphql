@@ -9,6 +9,11 @@ type Survey {
   description: String
   type: String
   typeKeywords: [String]
+  owner: String
+  thumbnail: String
+  created: Float
+  modified: Float
+  access: String
   formInfo: FormInfo
 }
 
