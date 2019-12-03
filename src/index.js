@@ -11,10 +11,10 @@ const server = new GraphQLServer({
 
 const opts = {
   defaultPlaygroundQuery,
-  https: {
-    key: fs.readFileSync('ssl/server.key'),
-    cert: fs.readFileSync('ssl/server.cert')
-  }
+  // https: {
+  //   key: fs.readFileSync('ssl/server.key'),
+  //   cert: fs.readFileSync('ssl/server.cert')
+  // }
 };
 
 server.start(opts, _ => console.log(`Server is running on http://localhost:4000`))
