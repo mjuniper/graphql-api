@@ -1,7 +1,7 @@
 const { GraphQLServer } = require('graphql-yoga')
 const resolvers = require('./graphql/resolvers');
 const defaultPlaygroundQuery = require('./graphql/defaultPlaygroundQuery');
-const fs = require('fs');
+// const fs = require('fs');
 
 const server = new GraphQLServer({
   typeDefs: `./src/graphql/schema.graphql`,
